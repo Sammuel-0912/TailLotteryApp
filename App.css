@@ -1,0 +1,58 @@
+/* ===== Cartoon Style Add-on ===== */
+
+/* 整體卡通風：背景、字體、顏色 */
+body {
+  background: #f8f2d8;
+  font-family: "Comic Sans MS", "Trebuchet MS", sans-serif;
+  color: #2d2d2d;
+}
+
+/* Cardoon outline + pop shadow */
+.card {
+  background: #fff;
+  border: 4px solid #1b1b1b;
+  border-radius: 18px;
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.25);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+.card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.35);
+}
+
+/* Logo 卡通效果：粗邊框、亮色背景 */
+.logo {
+  border: 4px solid #1b1b1b;
+  border-radius: 20px;
+  background: #ffe864;
+  transition: filter 300ms, transform 150ms;
+}
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* read-the-docs 卡通式標示 */
+.read-the-docs {
+  color: #3a3a3a;
+  font-style: italic;
+  border-bottom: 3px dotted #1b1b1b;
+}
+
+/* 按鈕示範（若你的頁面有用到） */
+button {
+  background: #ffcc4a;
+  border: 4px solid #1b1b1b;
+  padding: 0.6em 1.4em;
+  border-radius: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+button:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.3);
+}
+button:active {
+  transform: translate(0, 0);
+  box-shadow: none;
+}
