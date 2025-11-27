@@ -7,7 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sammuel-0912/TailLotteryApp.git"
   },
   "dependencies": {
     "react": "^19.2.0",
