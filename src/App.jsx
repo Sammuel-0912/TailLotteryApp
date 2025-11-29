@@ -1,7 +1,21 @@
-import React from "react"; 
 import './App.css'
-// import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { Modal } from 'bootstrap'; 
+import axios from 'axios';
+// console.log(import.meta.env.VITE_APP_PATH);
+import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client';
 
+const { VITE_APP_PATH } = import.meta.env;
+const root = createRoot(document.getElementById('root'));
+
+const data = {
+  imageUrl: "https://images.unsplash.com/photo-1505968409348-bd000797c92e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGZyZWUlMjBpbWFnZXN8ZW58MHx8MHx8fDA%3D",
+  title: '卡斯柏',
+  content: "Some quick example text to build on the card title and make up the bulk of the card's content.",
+  link: 'https://bootstrap5.hexschool.com/docs/5.0/components/card/',
+}
+root.render(<App />);
 
 // 模擬 10 人員工名單
 const initialEmployees = [
@@ -30,6 +44,29 @@ const initialPrizes = [
 
 export default function App() {
 
+const customModal = useRef(null)
+
+  useEffect(() => {
+  (async () => {
+    const res = await axios.get(VITE_APP_PATH);
+    console.log(res);
+
+    openModal();
+
+    setTimeout(() => {
+      closeModal();
+    }, 2000);
+  })();  // ← IIFE 必須被呼叫
+}, []);
+
+  const openModal = () => {
+    customModal.current.show()
+  }
+  const closeModal = () => {
+    customModal.current.hide()
+  }
+
+  const modalRef = useRef(null)
   const [employees, setEmployees] = useState(initialEmployees);
   const [remainingIds, setRemainingIds] = useState(initialEmployees.map((e) => e.id));
   const [prizes, setPrizes] = useState(initialPrizes);
@@ -291,8 +328,43 @@ export default function App() {
           </div>
         </div>
       </div>
+  <button type="button" className="btn btn-primary" onClick={() => openModal()} data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+<div className="modal fade" ref={modalRef} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div className="modal-body">
+        ...
+      </div>
+      <div className="modal-footer">
+        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" className="btn btn-primary">Save changes</button>
+      </div>
     </div>
+  </div>
+</div>
+
+<div id="card" className="card">
+    <img src={ data.imageUrl } className="card-img-top" alt="..." />
+    <div className="card-body">
+      <h5 className="card-title">{ data.title }</h5>
+      <p className="card-text">{data.content}</p>
+      <a href={data.link} className="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+
+
+    </div>
+
+
+
   );
+  
 }
 
 
