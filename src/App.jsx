@@ -9,6 +9,18 @@ import { createRoot } from 'react-dom/client';
 const { VITE_APP_PATH } = import.meta.env;
 const root = createRoot(document.getElementById('root'));
 
+const list = [<ul className="list-group">
+  <li className="list-group-item active" aria-current="true">An active item</li>
+  <li className="list-group-item">A second item</li>
+  <li className="list-group-item">A third item</li>
+  <li className="list-group-item">A fourth item</li>
+  <li className="list-group-item">And a fifth one</li>
+</ul> ] ; 
+
+const htmlTemplate = {
+  __html: '<div>這裡有一段文字</div>'
+}
+
 const data = {
   imageUrl: "https://images.unsplash.com/photo-1505968409348-bd000797c92e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGZyZWUlMjBpbWFnZXN8ZW58MHx8MHx8fDA%3D",
   title: '卡斯柏',
@@ -357,14 +369,13 @@ const customModal = useRef(null)
       <a href={data.link} className="btn btn-primary">Go somewhere</a>
     </div>
   </div>
-
-
-    </div>
-
-
-
+            {list}
+            <div dangerouslySetInnerHTML={htmlTemplate} />
+  </div>
   );
-  
+
+  </*on change*/></>
+
 }
 
 
